@@ -63,7 +63,7 @@ const MenuBar = ({ editor, setLink }) => {
         setLink
       </button>
       <button
-        onClick={() => editor.chain().focus().unsetLink().run()}
+        onClick={() => editor.commands.unsetMark('link')}
         disabled={!editor.isActive('link')}
       >
         unsetLink
@@ -81,6 +81,9 @@ const MenuBar = ({ editor, setLink }) => {
       />
       <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
         clear marks
+      </button>
+      <button onClick={() => editor.commands.toggleLink()}>
+        clear link
       </button>
       {/* <button onClick={() => editor.chain().focus().clearNodes().run()}>
         clear nodes
@@ -241,11 +244,7 @@ const Tiptap = () => {
         //   return 'Can you add some further context?'
         // },
       }),
-      Link.configure({
-        HTMLAttributes: {
-          class: 'my-custom-class',
-        },
-      }),
+      Link,
       Underline,
       Superscript,
       Subscript,
@@ -280,7 +279,7 @@ const Tiptap = () => {
 
     // empty
     if (url === '') {
-      editor.chain().focus().extendMarkRange('link').unsetLink()
+      editor.chain().focus().unsetLink()
         .run()
 
       return
