@@ -63,7 +63,7 @@ const MenuBar = ({ editor, setLink }) => {
         setLink
       </button>
       <button
-        onClick={() => editor.commands.unsetMark('link')}
+        onClick={() => editor.chain().focus().unsetMark('link').run()}
         disabled={!editor.isActive('link')}
       >
         unsetLink
