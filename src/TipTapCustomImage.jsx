@@ -1,11 +1,15 @@
 import {
   Node,
+  nodeInputRule,
+  mergeAttributes
 } from "@tiptap/core";
-import { mergeAttributes } from "@tiptap/react";
 import { ReactNodeViewRenderer } from '@tiptap/react';
 import ResizableImageComponent from "./ResizableImageComponent";
 
+export const inputRegex = /(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/
+
 const TipTapCustomImage = () => {
+  console.log("Inside")
   return Node.create({
     name: "resizableImageComponent",
 
@@ -18,11 +22,11 @@ const TipTapCustomImage = () => {
     //     HTMLAttributes: {},
     //   };
     // },
+    inline: false,
     group: 'block', // belongs to the 'block' group of extensions
     selectable: true, // so we can select the video
-    draggable: true, // so we can drag the video
-    atom: true,
-    content: 'block*',
+    draggable: false,
+    allowBase64: false,
 
 
     addAttributes() {
@@ -60,9 +64,11 @@ const TipTapCustomImage = () => {
     },
 
     renderHTML({ HTMLAttributes }) {
+      console.log("Html attributes: ", HTMLAttributes)
+      console.log("Options: ", this.options)
       return [
         "resizable-image-component",
-        mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0
+        mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)
       ];
     },
 
@@ -81,6 +87,18 @@ const TipTapCustomImage = () => {
     addNodeView() {
       return ReactNodeViewRenderer(ResizableImageComponent)
     },
+    // addInputRules() {
+    //   return [
+    //     nodeInputRule({
+    //       find: inputRegex,
+    //       type: this.type,
+    //       getAttributes: match => {
+    //         const [,, alt, src, title, height, width, dataAlign, dataFloat] = match
+    //         return { src, alt, title, height, width, dataAlign, dataFloat }
+    //       },
+    //     }),
+    //   ]
+    // },
   });
 };
 

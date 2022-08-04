@@ -230,7 +230,7 @@ const Tiptap = () => {
           },
         }
       }),
-      TipTapCustomImage,
+      TipTapCustomImage(),
       Highlight.configure({
         multicolor: true,
       }),
@@ -262,7 +262,7 @@ const Tiptap = () => {
       <p>
         This is still the text editor you’re used to, but enriched with node views.
       </p>
-      <resizable-image-component src="https://images.unsplash.com/photo-1657087018695-a57e346504f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=778&q=80" alt="travelling"></resizable-image-component>
+      <resizable-image-component src="https://images.unsplash.com/photo-1657087018695-a57e346504f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80" alt="travelling"></resizable-image-component>
     `,
     autofocus: true,
     editable: true,

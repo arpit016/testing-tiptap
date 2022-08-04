@@ -6,7 +6,6 @@ const ResizableImageComponent = (props) => {
 
   return (
     <NodeViewWrapper className="resizable-image-component">
-      <div>
         <Rnd
           minWidth={300}
           minHeight={190}
@@ -22,12 +21,13 @@ const ResizableImageComponent = (props) => {
         >
           <div
             className="resizable-image-wrapper"
-            style={{ margin: 0, height: '100%', paddingBottom: '40px' }}
+            style={{ margin: 0, height: '100%', paddingBottom: '40px', maxWidth: "400px" }}
           >
             <img className="resizable-image" src={props.node.attrs.src} alt={props.node.attrs.alt} draggable="false" />
           </div>
         </Rnd>
-      </div>
+
+        {/* <img className="resizable-image" src={props.node.attrs.src} alt={props.node.attrs.alt} draggable="false" /> */}
     </NodeViewWrapper>
   )
 }
