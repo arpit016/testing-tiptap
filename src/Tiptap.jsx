@@ -9,7 +9,8 @@ import Subscript from "@tiptap/extension-subscript";
 import TextStyle from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import Highlight from '@tiptap/extension-highlight';
-import TextAlign from '@tiptap/extension-text-align'
+import TextAlign from '@tiptap/extension-text-align';
+import TipTapCustomImage from './TipTapCustomImage.jsx';
 import {
   FaBold,
   FaHeading,
@@ -229,6 +230,7 @@ const Tiptap = () => {
           },
         }
       }),
+      TipTapCustomImage(),
       Highlight.configure({
         multicolor: true,
       }),
@@ -256,7 +258,12 @@ const Tiptap = () => {
         defaultAlignment: 'left',
       })
     ],
-    content: '',
+    content: `
+      <p>
+        This is still the text editor you’re used to, but enriched with node views.
+      </p>
+      <resizable-image-component src="https://images.unsplash.com/photo-1657087018695-a57e346504f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80" alt="travelling"></resizable-image-component>
+    `,
     autofocus: true,
     editable: true,
     injectCSS: false,
