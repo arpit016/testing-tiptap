@@ -1,0 +1,29 @@
+// .node-tableCell {
+//   height: 35px !important;
+// }
+.table-cell-dropdown-wrapper {
+  list-style-type: none;
+  border: 1px solid #ebebeb;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 12em;
+  li {
+    padding: 8px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f6f6f6;
+    }
+  }
+}
+.table-cell-dropdown-trigger {
+  cursor: pointer;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

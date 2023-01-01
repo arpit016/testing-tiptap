@@ -9,7 +9,6 @@ import ResizableImageComponent from "./ResizableImageComponent";
 export const inputRegex = /(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/
 
 const TipTapCustomImage = () => {
-  console.log("Inside")
   return Node.create({
     name: "resizableImageComponent",
 

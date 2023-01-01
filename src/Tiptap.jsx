@@ -11,6 +11,11 @@ import { Color } from '@tiptap/extension-color';
 import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
 import TipTapCustomImage from './TipTapCustomImage.jsx';
+import Table from "@tiptap/extension-table";
+import CustomTableCell from "./CustomTableCell";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
 import {
   FaBold,
   FaHeading,
@@ -156,6 +161,17 @@ const MenuBar = ({ editor, setLink }) => {
         <FaListOl />
       </button>
       <button
+          onClick={() =>
+            editor
+              .chain()
+              .focus()
+              .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+              .run()
+          }
+        >
+          insertTable
+      </button>
+      <button
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         className={editor.isActive('codeBlock') ? 'is-active' : ''}
       >
@@ -230,7 +246,7 @@ const Tiptap = () => {
           },
         }
       }),
-      TipTapCustomImage(),
+      CustomTableCell,
       Highlight.configure({
         multicolor: true,
       }),
@@ -256,7 +272,12 @@ const Tiptap = () => {
         alignments: ['left', 'right', 'center', 'justify'],
         types: ['heading', 'paragraph'],
         defaultAlignment: 'left',
-      })
+      }),
+      Table.configure({
+        resizable: true,
+      }),
+      TableRow,
+      TableHeader,
     ],
     content: `
       <p>
